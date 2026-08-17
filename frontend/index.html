@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Personal Finance</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ================================================== -->
+    <!-- LOGIN PAGE -->
+    <!-- ================================================== -->
+
+    <main
+        id="loginPage"
+        class="login-container"
+    >
+
+        <div class="login-card">
+
+            <div class="logo">
+                💰
+            </div>
+
+            <h1>
+                Personal Finance
+            </h1>
+
+            <p class="subtitle">
+                Finanslarını kontrol altında tut.
+            </p>
+
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label for="username">
+                        Kullanıcı adı
+                    </label>
+
+                    <input
+                        id="username"
+                        type="text"
+                        placeholder="Kullanıcı adınız"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Şifre
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Şifreniz"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+                    Giriş Yap
+                </button>
+
+            </form>
+
+
+            <p
+                id="loginMessage"
+                class="login-message"
+            ></p>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================================================== -->
+    <!-- MAIN APPLICATION -->
+    <!-- ================================================== -->
+
+    <main
+        id="dashboardPage"
+        class="app-container hidden"
+    >
+
+
+        <!-- ================================================== -->
+        <!-- HOME -->
+        <!-- ================================================== -->
+
+        <section
+            id="homePage"
+            class="app-page"
+        >
+
+            <header class="dashboard-header">
+
+                <div>
+
+                    <p class="welcome">
+                        Hoş geldin
+                    </p>
+
+                    <h1 id="dashboardUsername">
+                        -
+                    </h1>
+
+                </div>
+
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                    type="button"
+                >
+                    Çıkış
+                </button>
+
+            </header>
+
+
+            <!-- BALANCE -->
+
+            <section class="balance-card">
+
+                <p>
+                    Toplam Bakiye
+                </p>
+
+                <h2 id="balance">
+                    ₺0,00
+                </h2>
+
+            </section>
+
+
+            <!-- MONTHLY SUMMARY -->
+
+            <section class="summary-grid">
+
+                <div class="summary-card">
+
+                    <span class="summary-icon income-icon">
+                        ↑
+                    </span>
+
+                    <div>
+
+                        <p>
+                            Aylık Gelir
+                        </p>
+
+                        <h3 id="monthlyIncome">
+                            ₺0,00
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <span class="summary-icon expense-icon">
+                        ↓
+                    </span>
+
+                    <div>
+
+                        <p>
+                            Aylık Gider
+                        </p>
+
+                        <h3 id="monthlyExpense">
+                            ₺0,00
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT TRANSACTIONS -->
+
+            <section class="transactions-section">
+
+                <div class="section-header">
+
+                    <h2>
+                        Son İşlemler
+                    </h2>
+
+                    <button
+                        id="showAllTransactionsButton"
+                        class="text-button"
+                        type="button"
+                    >
+                        Tümünü Gör
+                    </button>
+
+                </div>
+
+
+                <div id="transactionsList">
+                </div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- ================================================== -->
+        <!-- TRANSACTIONS PAGE -->
+        <!-- ================================================== -->
+
+        <section
+            id="transactionsPage"
+            class="app-page hidden"
+        >
+
+            <header class="page-header">
+
+                <p class="page-label">
+                    Finans
+                </p>
+
+                <h1>
+                    İşlemler
+                </h1>
+
+            </header>
+
+
+            <div
+                id="allTransactionsList"
+                class="all-transactions-list"
+            >
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================================== -->
+        <!-- REPORTS PAGE -->
+        <!-- ================================================== -->
+
+        <section
+            id="reportsPage"
+            class="app-page hidden"
+        >
+
+            <header class="page-header">
+
+                <p class="page-label">
+                    Analiz
+                </p>
+
+                <h1>
+                    Raporlar
+                </h1>
+
+            </header>
+
+
+            <div class="placeholder-card">
+
+                <div class="placeholder-icon">
+                    📊
+                </div>
+
+                <h2>
+                    Raporlar yakında
+                </h2>
+
+                <p>
+                    Gelir, gider ve harcama analizleri
+                    burada gösterilecek.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================================== -->
+        <!-- SETTINGS PAGE -->
+        <!-- ================================================== -->
+
+        <section
+            id="settingsPage"
+            class="app-page hidden"
+        >
+
+            <header class="page-header">
+
+                <p class="page-label">
+                    Hesap
+                </p>
+
+                <h1>
+                    Ayarlar
+                </h1>
+
+            </header>
+
+
+            <div class="settings-card">
+
+                <button
+                    id="userSettingsButton"
+                    class="settings-item"
+                    type="button"
+                    >
+                    <span>
+                        👤 Kullanıcı
+                    </span>
+
+                    <span>
+                        ›
+                    </span>
+                </button>
+
+
+                <button
+                    id="changePasswordButton"
+                    class="settings-item"
+                    type="button"
+                >
+                    <span>
+                        🔐 Şifre Değiştir
+                    </span>
+
+                    <span>
+                        ›
+                    </span>
+                </button>
+
+
+                <button
+                    id="newMonthButton"
+                    class="settings-item danger-setting"
+                    type="button"
+                >
+                    <span>
+                        📅 Yeni Ay Başlat
+                    </span>
+
+                    <span>
+                        ›
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================================== -->
+        <!-- FLOATING ADD BUTTON -->
+        <!-- ================================================== -->
+
+        <button
+            id="addTransactionButton"
+            class="floating-add-button"
+            type="button"
+            aria-label="Yeni işlem ekle"
+        >
+            +
+        </button>
+
+
+
+        <!-- ================================================== -->
+        <!-- BOTTOM NAVIGATION -->
+        <!-- ================================================== -->
+
+        <nav class="bottom-nav">
+
+            <button
+                class="nav-button active"
+                data-page="homePage"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    🏠
+                </span>
+
+                <span>
+                    Ana Sayfa
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-button"
+                data-page="transactionsPage"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    💳
+                </span>
+
+                <span>
+                    İşlemler
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-button"
+                data-page="reportsPage"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    📊
+                </span>
+
+                <span>
+                    Raporlar
+                </span>
+
+            </button>
+
+
+            <button
+                class="nav-button"
+                data-page="settingsPage"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ⚙️
+                </span>
+
+                <span>
+                    Ayarlar
+                </span>
+
+            </button>
+
+        </nav>
+
+    </main>
+
+
+
+    <!-- ================================================== -->
+    <!-- ADD TRANSACTION MODAL -->
+    <!-- ================================================== -->
+
+    <div
+        id="transactionModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Yeni İşlem
+                </h2>
+
+
+                <button
+                    id="closeModalButton"
+                    class="close-button"
+                    type="button"
+                    aria-label="Kapat"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="transactionForm">
+
+
+                <!-- TYPE -->
+
+                <div class="transaction-type">
+
+                    <button
+                        type="button"
+                        class="type-button active"
+                        data-type="expense"
+                    >
+                        Gider
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="type-button"
+                        data-type="income"
+                    >
+                        Gelir
+                    </button>
+
+                </div>
+
+
+
+                <!-- AMOUNT -->
+
+                <div class="input-group">
+
+                    <label for="transactionAmount">
+                        Tutar
+                    </label>
+
+                    <input
+                        id="transactionAmount"
+                        type="number"
+                        step="0.01"
+                        min="0.01"
+                        inputmode="decimal"
+                        placeholder="0,00"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="input-group">
+
+                    <label for="transactionDescription">
+                        Açıklama
+                    </label>
+
+                    <input
+                        id="transactionDescription"
+                        type="text"
+                        placeholder="Örn: Akşam yemeği"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <p
+                    id="transactionMessage"
+                    class="transaction-message"
+                ></p>
+
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    İşlemi Kaydet
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ================================================== -->
+<!-- USER SETTINGS MODAL -->
+<!-- ================================================== -->
+
+<div
+    id="userModal"
+    class="modal hidden"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                Kullanıcı
+            </h2>
+
+            <button
+                id="closeUserModalButton"
+                class="close-button"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="userForm">
+
+            <div class="input-group">
+
+                <label for="settingsUsername">
+                    Kullanıcı Adı
+                </label>
+
+                <input
+                    id="settingsUsername"
+                    type="text"
+                    minlength="3"
+                    required
+                >
+
+            </div>
+
+
+            <p
+                id="userMessage"
+                class="transaction-message"
+            ></p>
+
+
+            <button
+                type="submit"
+                class="save-button"
+            >
+                Kaydet
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ================================================== -->
+<!-- NEW MONTH MODAL -->
+<!-- ================================================== -->
+
+<div
+    id="newMonthModal"
+    class="modal hidden"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                Yeni Ay Başlat
+            </h2>
+
+            <button
+                id="closeNewMonthModalButton"
+                class="close-button"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="warning-box">
+
+            <div class="warning-icon">
+                ⚠️
+            </div>
+
+            <h3>
+                Mevcut ay kapatılacak
+            </h3>
+
+            <p>
+                Mevcut gelir ve gider işlemleri arşivlenecek.
+                Aktif bakiye, aylık gelir ve aylık gider 0 TL
+                olarak yeni aya başlayacak.
+            </p>
+
+        </div>
+
+
+        <p
+            id="newMonthMessage"
+            class="transaction-message"
+        ></p>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="cancelNewMonthButton"
+                type="button"
+                class="secondary-button"
+            >
+                Vazgeç
+            </button>
+
+
+            <button
+                id="confirmNewMonthButton"
+                type="button"
+                class="danger-button"
+            >
+                Yeni Ay Başlat
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================================================== -->
+<!-- CHANGE PASSWORD MODAL -->
+<!-- ================================================== -->
+
+<div
+    id="passwordModal"
+    class="modal hidden"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>
+                Şifre Değiştir
+            </h2>
+
+            <button
+                id="closePasswordModalButton"
+                class="close-button"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="passwordForm">
+
+            <div class="input-group">
+
+                <label for="currentPassword">
+                    Mevcut Şifre
+                </label>
+
+                <input
+                    id="currentPassword"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="newPassword">
+                    Yeni Şifre
+                </label>
+
+                <input
+                    id="newPassword"
+                    type="password"
+                    minlength="4"
+                    autocomplete="new-password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="confirmNewPassword">
+                    Yeni Şifre Tekrar
+                </label>
+
+                <input
+                    id="confirmNewPassword"
+                    type="password"
+                    minlength="4"
+                    autocomplete="new-password"
+                    required
+                >
+
+            </div>
+
+
+            <p
+                id="passwordMessage"
+                class="transaction-message"
+            ></p>
+
+
+            <button
+                type="submit"
+                class="save-button"
+            >
+                Şifreyi Değiştir
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+    <!-- ================================================== -->
+    <!-- JAVASCRIPT -->
+    <!-- ================================================== -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
