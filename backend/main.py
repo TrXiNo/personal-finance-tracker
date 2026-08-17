@@ -1,19 +1,23 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from pathlib import Path
 from datetime import datetime
 import json
 import hashlib
 
-#To Start: uvicorn main:app --reload
+#Default password: root
+#Default hashcode: 4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2
 
 # --------------------------------------------------
 # SETTINGS
 # --------------------------------------------------
 
 BASE_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = BASE_DIR.parent
+
 FILE_NAME = BASE_DIR / "finance.json"
+FRONTEND_DIR = PROJECT_DIR / "frontend"
 
 
 # --------------------------------------------------
@@ -24,15 +28,6 @@ app = FastAPI(
     title="Personal Finance API",
     description="Personal Finance Tracker Backend",
     version="1.0.0"
-)
-
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
 )
 
 
@@ -154,10 +149,10 @@ class LoginRequest(BaseModel):
 # ROUTES
 # --------------------------------------------------
 
-@app.get("/")
-def home():
-
+@app.get("/api/status")
+def status():
     return {
+        "status": "ok",
         "message": "Personal Finance API çalışıyor!"
     }
 
@@ -449,3 +444,16 @@ def change_password(request: PasswordUpdateRequest):
         "success": True,
         "message": "Şifre başarıyla değiştirildi."
     }
+
+# --------------------------------------------------
+# FRONTEND
+# --------------------------------------------------
+
+app.mount(
+    "/",
+    StaticFiles(
+        directory=str(FRONTEND_DIR),
+        html=True
+    ),
+    name="frontend"
+)
