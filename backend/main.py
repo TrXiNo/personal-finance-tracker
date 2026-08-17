@@ -6,6 +6,7 @@ from datetime import datetime
 import json
 import hashlib
 
+#To Start: uvicorn main:app --reload
 
 # --------------------------------------------------
 # SETTINGS
