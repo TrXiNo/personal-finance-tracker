@@ -1,5 +1,6 @@
 # Sensitive data
 backend/finance.json
+default_finance.json
 
 # Python
 __pycache__/
